@@ -1,18 +1,26 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <!-- <AdminView /> -->
+    <SuperAdminView v-if="show"/>
+    
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import AdminView from '../components/AdminView.vue';
+import SuperAdminView from '../components/SuperAdminView.vue';
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
+  data(){
+    return{
+        show: true
+    }
+  },
+  components : {
+    AdminView,
+    SuperAdminView,
+    
+  },
+  methods : {
+    
   }
 }
 </script>

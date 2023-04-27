@@ -1,30 +1,60 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <Login v-if="!navigation"/>
+  <section class="grid-container" v-if="navigation">
+    <SideBar/>
+    <router-view/>
+  </section>
+  
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+// import router from './router'
+import Login from './views/Login.vue'
+import SideBar from './components/SideBar.vue'
+import axios from 'axios'
+export default {
+  name : 'App',
+  components : {
+    SideBar, Login
+  },
+  data () {
+    return {
+      navigation : true,
+      user : ''
     }
-  }
+  },
+  methods : {
+    disableNavigation() {
+    if (this.$route.name === 'Login') {
+      this.navigation = false
+    } else {
+      this.navigation = true
+    }
+  },
+    async getUserInfo(){
+      try {
+        const user = await axios.get('https://v-guard.onrender.com/api/admin/auth/info', {headers : {"Authorization": "Token "+localStorage.getItem('token')}})
+        // console.log(user);
+      } catch (error) {
+        this.$store.commit('logout')
+
+      }
+    }
+  },
+  watch : {
+    $route(){
+      this.disableNavigation()
+    }
+  },
+  created(){
+    this.disableNavigation()
+    this.getUserInfo()
+  
+  },
 }
+</script>
+
+
+<style lang="scss">
+
 </style>
