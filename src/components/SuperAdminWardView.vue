@@ -39,7 +39,7 @@
                         <p>Number of Void Votes</p>
                         <span class="count">20</span>
                     </div>
-                  
+                    
                 </div>
             </div>
          

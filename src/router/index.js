@@ -3,6 +3,8 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import SuperAdminLgaView from '../components/SuperAdminLgaView'
 import SuperAdminWardView from '../components/SuperAdminWardView'
+import SuperAdminPollingUnitView from '../components/SuperAdminPollingUnitView'
+import SuperAdminPollingUnitDetailView from '../components/SuperAdminPollingUnitDetailView'
 
 const routes = [
   {
@@ -13,6 +15,7 @@ const routes = [
       requiresLogin : true
     }
   },
+
   {
     path: '/lga-view/:lgaName',
     name: 'SuperAdminLgaView',
@@ -20,8 +23,26 @@ const routes = [
     meta : {
       requiresLogin : true
     }
-    
   },
+
+  {
+    path: '/polling-unit-view/:wardName',
+    name: 'SuperAdminPollingUnitView',
+    component: SuperAdminPollingUnitView,
+    meta : {
+      requiresLogin : true
+    }
+  },
+
+  {
+    path: '/polling-unit-detail-view/:pollingUnit',
+    name: 'SuperAdminPollingUnitDetailView',
+    component: SuperAdminPollingUnitDetailView,
+    meta : {
+      requiresLogin : true
+    }
+  },
+
   {
     path: '/ward-view',
     name: 'SuperAdminWardView',
@@ -29,8 +50,8 @@ const routes = [
     meta : {
       requiresLogin : true
     }
-    
   },
+  
   {
     path: '/login',
     name: 'Login',
@@ -39,14 +60,7 @@ const routes = [
       cannotBeAccessedAfterLogin : true
     }
   },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+  
 ]
 
 const router = createRouter({

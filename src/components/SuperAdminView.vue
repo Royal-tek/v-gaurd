@@ -33,7 +33,7 @@
                         <span class="count">{{ stats.totalVoters }}</span>
                     </div>
                     <div class="super-card">
-                        <p>Total Number of Votes</p>
+                        <p>Total Number of Valid Votes</p>
                         <span class="count">{{ stats.totalVotes }}</span>
                     </div>
                     <div class="super-card">
@@ -108,7 +108,8 @@
                             <div class="row" >
                                 <div class="col-6" style="height: 50px !important" v-for="(lga, index) in lgas" :key="index">
                                     <div class="row_content">
-                                    <router-link :to="`/lga-view/${lga}`" class="row_man" >{{ lga }}</router-link>
+                                    <router-link :to="{ path: `/lga-view/${lga}`, query: { lga: lga}}" class="row_man">{{ lga }}</router-link>
+                                    <!-- <router-link :to="`/lga-view/${lga}`" class="row_man" >{{ lga }}</router-link> -->
                                 </div>
                                 </div>
                                 

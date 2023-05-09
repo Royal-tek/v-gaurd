@@ -4,6 +4,11 @@ import router from '../router'
 
 export default createStore({
   state: {
+    addons : {
+      political : true,
+      agent : false,
+      feedback : false
+    },
     user : false,
     token : localStorage.getItem('token'),
     error : false,

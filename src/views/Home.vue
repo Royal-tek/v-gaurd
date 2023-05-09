@@ -1,6 +1,6 @@
 <template>
-    <!-- <AdminView /> -->
-    <SuperAdminView v-if="show"/>
+    <AdminView />
+    <!-- <SuperAdminView v-if="show"/> -->
     
 </template>
 

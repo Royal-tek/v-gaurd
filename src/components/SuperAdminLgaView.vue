@@ -85,14 +85,18 @@
                             
                         </tr>
                     </thead>
-                    <tbody class="table__body">
+                    <tbody class="">
+                        
                         <tr v-for="(ward, index) in wards" :key="index">
+                            
                             <th scope="row" class="row__title">Enyiogugu</th>
-                            <td>{{ ward }}</td>
+                            <router-link style="color: black;" :to="{ path: `/polling-unit-view/${ward}`, query: { lga: $route.query.lga, ward: ward}}"><td>{{ ward }}</td></router-link>
                             <td>20</td>
                             <td>20</td>
                             <td>20</td>
+                            
                         </tr>
+                        
 
                     </tbody>
                 </table>
